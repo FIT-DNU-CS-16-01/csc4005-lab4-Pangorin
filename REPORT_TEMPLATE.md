@@ -2,11 +2,11 @@
 
 ## 1. Thông tin sinh viên
 
-- Họ tên:
-- Mã sinh viên:
-- Lớp:
-- Link GitHub repo:
-- Link W&B project:
+- Họ tên: Đỗ Lê Mạnh Hùng
+- Mã sinh viên: 1671040014
+- Lớp: KHMT 16-01
+- Link GitHub repo: https://github.com/FIT-DNU-CS-16-01/csc4005-lab3-1dcnn-Pangorin
+- Link W&B project: https://wandb.ai/15sofme-dai-nam-university/csc4005-lab3-urbansound-1dcnn?nw=nwuser15sofme
 
 ## 2. Mục tiêu thí nghiệm
 
@@ -17,6 +17,10 @@ Gợi ý:
 - Vì sao dùng log-mel spectrogram?
 - CRNN khác gì so với 1D-CNN ở Lab 3?
 - Mục tiêu đánh giá mô hình là gì?
+
+- Với CRNN, log-mel spectrogram thường trực quan hơn vì nó giữ được cấu trúc thời gian–tần số.
+- 1D-CNN nhận diện nhanh các sự kiện âm thanh cục bộ, CRNN kết hợp thêm bộ nhớ để hiểu ngữ cảnh của các chuỗi âm thanh dài liên tục
+- Mục tiêu đánh giá mô hình: đánh giá loss, accuracy trên tập train & validation, quan sát xem mô hình có bị overfit hoặc underfit hay không
 
 ## 3. Cấu hình dữ liệu
 
@@ -36,14 +40,14 @@ Gợi ý:
 | Thành phần | Giá trị |
 |---|---|
 | Model | CRNN |
-| CNN blocks | |
+| CNN blocks | ? |
 | RNN type | GRU / LSTM |
-| Hidden size | |
-| Dropout | |
-| Optimizer | |
-| Learning rate | |
-| Batch size | |
-| Epochs | |
+| Hidden size | 96 |
+| Dropout | 0.3 |
+| Optimizer | adamw |
+| Learning rate | 0.001 |
+| Batch size | 32 |
+| Epochs | 25 |
 
 ## 5. Kết quả huấn luyện
 
