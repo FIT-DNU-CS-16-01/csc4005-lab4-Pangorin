@@ -2,21 +2,16 @@
 
 ## 1. Thông tin sinh viên
 
-- Họ tên:
-- Mã sinh viên:
-- Lớp:
-- Link GitHub repo:
-- Link W&B project:
+- Họ tên: Đỗ Lê Mạnh Hùng
+- Mã sinh viên: 1671040014
+- Lớp: KHMT 16-01
+- Link GitHub repo: https://github.com/FIT-DNU-CS-16-01/csc4005-lab4-Pangorin#
+- Link W&B project: https://wandb.ai/15sofme-dai-nam-university/csc4005-lab4-urbansound8k-crnn
 
 ## 2. Mục tiêu thí nghiệm
-
-Viết ngắn gọn 3–5 dòng về mục tiêu của Lab 4.
-
-Gợi ý:
-
-- Vì sao dùng log-mel spectrogram?
-- CRNN khác gì so với 1D-CNN ở Lab 3?
-- Mục tiêu đánh giá mô hình là gì?
+- Dùng log-mel spectrogram vì với CRNN, log-mel spectrogram thường trực quan hơn vì nó giữ được cấu trúc thời gian–tần số.
+- 1D-CNN nhận diện cực nhanh các sự kiện âm thanh cục bộ, trong khi CRNN kết hợp thêm bộ nhớ để hiểu ngữ cảnh của các chuỗi âm thanh dài liên tục.
+- Mục tiêu đánh giá mô hình: nhận xét về loss & accuracy của tập train, validation, quan sát xem có dấu hiệu overfitting hay underfitting hay không.
 
 ## 3. Cấu hình dữ liệu
 
@@ -36,14 +31,14 @@ Gợi ý:
 | Thành phần | Giá trị |
 |---|---|
 | Model | CRNN |
-| CNN blocks | |
+| CNN blocks | ? |
 | RNN type | GRU / LSTM |
-| Hidden size | |
-| Dropout | |
-| Optimizer | |
-| Learning rate | |
-| Batch size | |
-| Epochs | |
+| Hidden size | 96 |
+| Dropout | 0.3 |
+| Optimizer | adamw |
+| Learning rate | 0.0001 |
+| Batch size | 32 |
+| Epochs | 25 |
 
 ## 5. Kết quả huấn luyện
 
@@ -51,28 +46,28 @@ Gợi ý:
 
 | Run | best_val_acc | test_acc | Ghi chú |
 |---|---:|---:|---|
-| logmel_crnn_gru_baseline | | | |
+| logmel_crnn_gru_baseline | 0.7401960784313726 | 0.7479091995221028 | |
 | extension_bilstm_crnn | | | |
 
 ## 6. Learning curves
 
-Chèn hình `curves.png`.
+![Image]().
 
 Nhận xét:
 
-- Mô hình có overfitting không?
-- Validation loss có giảm ổn định không?
-- Có cần early stopping không?
+- Mô hình có dấu hiệu overfitting, bắt đầu từ khoảng epoch 15 trở đi, đường `train_loss` tiếp tục giảm đều và `train_acc` tăng, nhưng `val_loss` có dấu hiệu đi ngang và khoảng cách giữa tập train và tập val bắt đầu giãn rộng.
+- Validation loss không giảm ổn định. Đường `val_loss` và cả `val_acc` dao động khá nhiều qua các epoch chứ không mượt, đặc biệt ở giai đoạn nửa sau.
+- Có cần early stopping khoảng quanh epoch 15-20, vì sau điểm này mô hình gần như không cải thiện.
 
 ## 7. Confusion matrix
 
-Chèn hình `confusion_matrix.png`.
+![Confusion_Matrix]()
 
 Nhận xét:
 
-- Lớp nào phân loại tốt?
-- Lớp nào dễ bị nhầm?
-- Có thể giải thích bằng đặc điểm âm thanh không?
+- Lớp phân loại tốt: `gun_shot`, `jackhammer`, `children_playing`, `drilling`.
+- Lớp dễ bị nhầm: `siren` bị nhầm rất nhiều với `children_playing`, hay `engine_idling` dễ bị nhầm thành `jackhammer`.
+- Có, mô hình phân biệt tốt các âm thanh xung/ngắt quãng đột ngột. Tuy nhiên, nó dễ bị nhầm lẫn giữa các âm thanh có cùng dải tần số cao/chói hoặc cùng dải trầm/vang cơ khí.
 
 ## 8. So sánh với Lab 3 1D-CNN
 

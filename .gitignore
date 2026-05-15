@@ -3,7 +3,6 @@ __pycache__/
 .venv/
 .env
 wandb/
-outputs/*
 !outputs/.gitkeep
 data/
 *.zip
