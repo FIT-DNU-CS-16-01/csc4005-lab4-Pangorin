@@ -61,34 +61,10 @@ Nhận xét:
 
 ## 7. Confusion matrix
 
-![Confusion_Matrix]()
+![Confusion_Matrix](outputs/logmel_crnn_gru_baseline/confusion_matrix.png)
 
 Nhận xét:
 
 - Lớp phân loại tốt: `gun_shot`, `jackhammer`, `children_playing`, `drilling`.
 - Lớp dễ bị nhầm: `siren` bị nhầm rất nhiều với `children_playing`, hay `engine_idling` dễ bị nhầm thành `jackhammer`.
 - Có, mô hình phân biệt tốt các âm thanh xung/ngắt quãng đột ngột. Tuy nhiên, nó dễ bị nhầm lẫn giữa các âm thanh có cùng dải tần số cao/chói hoặc cùng dải trầm/vang cơ khí.
-
-## 8. So sánh với Lab 3 1D-CNN
-
-| Tiêu chí | Lab 3: 1D-CNN | Lab 4: CRNN |
-|---|---|---|
-| Feature chính | MFCC / log-mel | log-mel |
-| Khả năng học pattern cục bộ | Có | Có |
-| Khả năng học quan hệ thời gian | Hạn chế | Tốt hơn |
-| Test accuracy | | |
-| Nhận xét | | |
-
-## 9. Kết luận
-
-Viết 5–8 dòng:
-
-- CRNN có cải thiện so với 1D-CNN không?
-- Kết quả có ổn định không?
-- Nếu làm tiếp, em sẽ cải thiện gì?
-
-## 10. Link minh chứng
-
-- GitHub commit cuối:
-- W&B run baseline:
-- W&B run mở rộng:
